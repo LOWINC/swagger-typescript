@@ -1,5 +1,5 @@
 {
   "url": "http://47.102.105.127:8100/v3/api-docs/billbear-foodie-first",
-  "dir": "./src/lib",
+  "dir": "./dist",
   "language": "typescript"
 }

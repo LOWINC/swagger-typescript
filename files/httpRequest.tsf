@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
  *
@@ -11,13 +13,9 @@ import qs from "qs";
 export const Http = {
   async getRequest(
     url: string,
-    // @ts-ignore
-    queryParams: any | undefined,
-    //@ts-ignore
-    _requestBody: undefined,
-    //@ts-ignore
+    queryParams: any,
+    requestBody: any,
     security: Security,
-    // @ts-ignore
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
     let query = queryParams;
@@ -30,37 +28,27 @@ export const Http = {
   },
   async postRequest(
     url: string,
-    //@ts-ignore
-    queryParams: any | undefined,
-    requestBody: any | undefined,
-    //@ts-ignore
+    queryParams: any,
+    requestBody: any,
     security: Security,
-    //@ts-ignore
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
     return getAxiosInstance().post(url, requestBody);
   },
   async putRequest(
     url: string,
-    //@ts-ignore
-    queryParams: any | undefined,
-    requestBody: any | undefined,
-    //@ts-ignore
+    queryParams: any,
+    requestBody: any,
     security: Security,
-    //@ts-ignore
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
     return getAxiosInstance().put(url, requestBody);
   },
   async deleteRequest(
     url: string,
-    //@ts-ignore
-    queryParams: any | undefined,
-    //@ts-ignore
-    _requestBody: undefined,
-    //@ts-ignore
+    queryParams: any,
+    requestBody: any,
     security: Security,
-    //@ts-ignore
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
     return getAxiosInstance().delete(url);
