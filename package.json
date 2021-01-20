@@ -62,12 +62,6 @@
     "ts-jest": "25.5.1",
     "typescript": "^4.0.5"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint"
-    }
-  },
   "files": [
     "lib",
     "files"
