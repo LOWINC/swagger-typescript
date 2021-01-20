@@ -1,10 +1,5 @@
 {
-    "url": "https://generator3.swagger.io/openapi.json",
-    "dir": "./test",
-    "language": "typescript",
-    "ignore": {
-        "headerParams": [
-            "terminalId"
-        ]
-    }
+  "url": "http://47.102.105.127:8100/v3/api-docs/billbear-foodie-first",
+  "dir": "./src/lib",
+  "language": "typescript"
 }
