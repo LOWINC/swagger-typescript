@@ -6,55 +6,63 @@
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { getAxiosInstance, Security } from "./config";
 
+import qs from "qs";
+
 export const Http = {
   async getRequest(
     url: string,
+    // @ts-ignore
     queryParams: any | undefined,
     //@ts-ignore
     _requestBody: undefined,
+    //@ts-ignore
     security: Security,
+    // @ts-ignore
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
-    return getAxiosInstance(security).get(url, {
-      params: queryParams,
-      ...configOverride,
-    });
+    let query = queryParams;
+    const form = queryParams?.form || {};
+    if (typeof form === "object") {
+      query = form;
+    }
+
+    return getAxiosInstance().get(`${url}?${qs.stringify(query)}`);
   },
   async postRequest(
     url: string,
+    //@ts-ignore
     queryParams: any | undefined,
     requestBody: any | undefined,
+    //@ts-ignore
     security: Security,
+    //@ts-ignore
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
-    return getAxiosInstance(security).post(url, requestBody, {
-      params: queryParams,
-      ...configOverride,
-    });
+    return getAxiosInstance().post(url, requestBody);
   },
   async putRequest(
     url: string,
+    //@ts-ignore
     queryParams: any | undefined,
     requestBody: any | undefined,
+    //@ts-ignore
     security: Security,
+    //@ts-ignore
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
-    return getAxiosInstance(security).put(url, requestBody, {
-      params: queryParams,
-      ...configOverride,
-    });
+    return getAxiosInstance().put(url, requestBody);
   },
   async deleteRequest(
     url: string,
+    //@ts-ignore
     queryParams: any | undefined,
     //@ts-ignore
     _requestBody: undefined,
+    //@ts-ignore
     security: Security,
+    //@ts-ignore
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
-    return getAxiosInstance(security).delete(url, {
-      params: queryParams,
-      ...configOverride,
-    });
+    return getAxiosInstance().delete(url);
   },
 };

@@ -8,6 +8,18 @@ const CONFIG = readFileSync(
   path.resolve(__dirname, "../files/config.tsf"),
 ).toString();
 
+const EVENT = readFileSync(
+  path.resolve(__dirname, "../files/event.tsf"),
+).toString();
+
+const INDEX = readFileSync(
+  path.resolve(__dirname, "../files/index.tsf"),
+).toString();
+
+const LOADING = readFileSync(
+  path.resolve(__dirname, "../files/loading.tsf"),
+).toString();
+
 const SERVICE_BEGINNING = `
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
@@ -49,4 +61,12 @@ function template(path: string, obj: { [x: string]: any } = {}) {
 const DEPRECATED_WARM_MESSAGE =
   "This endpoint deprecated and will be remove. Please use an alternative";
 
-export { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG, DEPRECATED_WARM_MESSAGE };
+export {
+  HTTP_REQUEST,
+  SERVICE_BEGINNING,
+  CONFIG,
+  DEPRECATED_WARM_MESSAGE,
+  EVENT,
+  INDEX,
+  LOADING,
+};

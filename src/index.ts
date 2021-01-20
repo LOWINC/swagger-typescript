@@ -7,7 +7,7 @@ import {
 } from "fs";
 import { format } from "prettier";
 import { SwaggerJson, SwaggerConfig } from "./types";
-import { HTTP_REQUEST, CONFIG } from "./strings";
+import { HTTP_REQUEST, CONFIG, LOADING, EVENT, INDEX } from "./strings";
 import { getSwaggerJson } from "./getJson";
 import { generator } from "./generator";
 import { build } from "tsc-prog";
@@ -45,6 +45,9 @@ async function generate() {
     writeFileSync(`${dir}/services.ts`, code);
 
     writeFileSync(`${dir}/httpRequest.ts`, HTTP_REQUEST);
+    writeFileSync(`${dir}/loading.ts`, LOADING);
+    writeFileSync(`${dir}/event.ts`, EVENT);
+    writeFileSync(`${dir}/index.ts`, INDEX);
 
     if (!existsSync(`${dir}/config.${isToJs ? "js" : "ts"}`)) {
       writeFileSync(
