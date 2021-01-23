@@ -40,7 +40,6 @@ async function generate() {
     formatFile(`${dir}/services.ts`, prettierOptions);
     formatFile(`${dir}/httpRequest.ts`, prettierOptions);
     formatFile(`${dir}/setHttpRequest.ts`, prettierOptions);
-    formatFile(`${dir}/index.ts`, prettierOptions);
   } catch (error) {
     console.error(error);
   }
