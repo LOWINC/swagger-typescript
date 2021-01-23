@@ -1,7 +1,7 @@
 interface Params {
   url: string;
-  queryParams?: object;
-  requestBody?: object;
+  queryParams?: any;
+  requestBody?: any;
 }
 
 interface Request {
