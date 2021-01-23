@@ -1,23 +1,16 @@
 import { readFileSync } from "fs";
 import path from "path";
+
+const SET_HTTP_REQUEST = readFileSync(
+  path.resolve(__dirname, "../files/setHttpRequest.tsf"),
+).toString();
+
 const HTTP_REQUEST = readFileSync(
   path.resolve(__dirname, "../files/httpRequest.tsf"),
 ).toString();
 
-const CONFIG = readFileSync(
-  path.resolve(__dirname, "../files/config.tsf"),
-).toString();
-
-const EVENT = readFileSync(
-  path.resolve(__dirname, "../files/event.tsf"),
-).toString();
-
 const INDEX = readFileSync(
   path.resolve(__dirname, "../files/index.tsf"),
-).toString();
-
-const LOADING = readFileSync(
-  path.resolve(__dirname, "../files/loading.tsf"),
 ).toString();
 
 const SERVICE_BEGINNING = `
@@ -26,26 +19,11 @@ const SERVICE_BEGINNING = `
  *
  * @version 4
  */
-import { AxiosRequestConfig } from "axios";
-import { SwaggerResponse } from "./config";
-import { Http } from "./httpRequest";
+import { SwaggerResponse } from './setHttpRequest';
+import { Http } from './httpRequest';
 
 //@ts-ignore
-const __DEV__ = process.env.NODE_ENV !== "production";
-
-function overrideConfig(
-  config?: AxiosRequestConfig,
-  configOverride?: AxiosRequestConfig,
-): AxiosRequestConfig {
-  return {
-    ...config,
-    ...configOverride,
-    headers: {
-      ...config?.headers,
-      ...configOverride?.headers,
-    },
-  };
-}
+const __DEV__ = process.env.NODE_ENV !== 'production';
 
 //@ts-ignore
 function template(path: string, obj: { [x: string]: any } = {}) {
@@ -62,11 +40,9 @@ const DEPRECATED_WARM_MESSAGE =
   "This endpoint deprecated and will be remove. Please use an alternative";
 
 export {
+  SET_HTTP_REQUEST,
   HTTP_REQUEST,
-  SERVICE_BEGINNING,
-  CONFIG,
-  DEPRECATED_WARM_MESSAGE,
-  EVENT,
   INDEX,
-  LOADING,
+  SERVICE_BEGINNING,
+  DEPRECATED_WARM_MESSAGE,
 };

@@ -1,0 +1,28 @@
+interface Params {
+  url: string;
+  queryParams?: object;
+  requestBody?: object;
+}
+
+interface Request {
+  get: (params: Params, security?: any, configOverride?: any) => any;
+  post: (params: Params, security?: any, configOverride?: any) => any;
+  put: (params: Params, security?: any, configOverride?: any) => any;
+  delete: (params: Params, security?: any, configOverride?: any) => any;
+}
+
+let request: Request;
+export function setRequest(requestInstant: Request) {
+  request = requestInstant;
+}
+
+export function getRequest() {
+  return {
+    get: request.get,
+    post: request.post,
+    put: request.put,
+    delete: request.delete,
+  };
+}
+
+export type SwaggerResponse<R> = R;

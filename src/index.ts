@@ -1,16 +1,9 @@
-import {
-  writeFileSync,
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  rmdirSync,
-} from "fs";
+import { writeFileSync, existsSync, mkdirSync, readFileSync } from "fs";
 import { format } from "prettier";
 import { SwaggerJson, SwaggerConfig } from "./types";
-import { HTTP_REQUEST, CONFIG, LOADING, EVENT, INDEX } from "./strings";
+import { HTTP_REQUEST, SET_HTTP_REQUEST, INDEX } from "./strings";
 import { getSwaggerJson } from "./getJson";
 import { generator } from "./generator";
-import { build } from "tsc-prog";
 import { majorVersionsCheck } from "./utils";
 
 async function generate() {
@@ -20,14 +13,11 @@ async function generate() {
     url,
     dir,
     prettierPath,
-    language,
     //@ts-ignore
     __unstable_is_legacy_properties,
   } = config;
   //@ts-ignore
   global.__unstable_is_legacy_properties = __unstable_is_legacy_properties;
-
-  const isToJs = language === "javascript";
 
   if (!existsSync(dir)) {
     mkdirSync(dir);
@@ -43,35 +33,14 @@ async function generate() {
     const code = generator(input, config);
 
     writeFileSync(`${dir}/services.ts`, code);
-
     writeFileSync(`${dir}/httpRequest.ts`, HTTP_REQUEST);
-    writeFileSync(`${dir}/loading.ts`, LOADING);
-    writeFileSync(`${dir}/event.ts`, EVENT);
     writeFileSync(`${dir}/index.ts`, INDEX);
+    writeFileSync(`${dir}/setHttpRequest.ts`, SET_HTTP_REQUEST);
 
-    if (!existsSync(`${dir}/config.${isToJs ? "js" : "ts"}`)) {
-      writeFileSync(
-        `${dir}/config.ts`,
-        CONFIG.replace(
-          "${AUTO_REPLACE_BASE_URL}",
-          input.servers?.[0].url || "",
-        ),
-      );
-    }
-
-    if (isToJs) {
-      convertTsToJs(dir);
-      formatFile(`${dir}/config.js`, prettierOptions);
-      formatFile(`${dir}/httpRequest.js`, prettierOptions);
-      formatFile(`${dir}/services.js`, prettierOptions);
-      formatFile(`${dir}/config.d.ts`, prettierOptions);
-      formatFile(`${dir}/httpRequest.d.ts`, prettierOptions);
-      formatFile(`${dir}/services.d.ts`, prettierOptions);
-    } else {
-      formatFile(`${dir}/config.ts`, prettierOptions);
-      formatFile(`${dir}/httpRequest.ts`, prettierOptions);
-      formatFile(`${dir}/services.ts`, prettierOptions);
-    }
+    formatFile(`${dir}/services.ts`, prettierOptions);
+    formatFile(`${dir}/httpRequest.ts`, prettierOptions);
+    formatFile(`${dir}/setHttpRequest.ts`, prettierOptions);
+    formatFile(`${dir}/index.ts`, prettierOptions);
   } catch (error) {
     console.error(error);
   }
@@ -80,34 +49,6 @@ async function generate() {
 function formatFile(filePath: string, prettierOptions: any) {
   const code = readFileSync(filePath).toString();
   writeFileSync(filePath, format(code, prettierOptions));
-}
-
-function convertTsToJs(dir: string) {
-  build({
-    basePath: ".", // always required, used for relative paths
-    compilerOptions: {
-      listFiles: true,
-      outDir: dir,
-      declaration: true,
-      skipLibCheck: true,
-      module: "esnext",
-      target: "esnext",
-      lib: ["esnext"],
-    },
-    files: [`${dir}/services.ts`],
-  });
-
-  if (existsSync(`${dir}/config.ts`)) {
-    rmdirSync(`${dir}/config.ts`, { recursive: true });
-  }
-
-  if (existsSync(`${dir}/services.ts`)) {
-    rmdirSync(`${dir}/services.ts`, { recursive: true });
-  }
-
-  if (existsSync(`${dir}/httpRequest.ts`)) {
-    rmdirSync(`${dir}/httpRequest.ts`, { recursive: true });
-  }
 }
 
 function getSwaggerConfig() {
