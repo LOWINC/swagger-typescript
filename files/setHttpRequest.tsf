@@ -5,10 +5,10 @@ interface Params {
 }
 
 interface Request {
-  get: (params: Params, security?: any, configOverride?: any) => any;
-  post: (params: Params, security?: any, configOverride?: any) => any;
-  put: (params: Params, security?: any, configOverride?: any) => any;
-  delete: (params: Params, security?: any, configOverride?: any) => any;
+  get: (params: Params) => any;
+  post: (params: Params) => any;
+  put: (params: Params) => any;
+  delete: (params: Params) => any;
 }
 
 let request: Request;

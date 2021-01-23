@@ -76,7 +76,7 @@ ${getJsdoc({
                     headerParams,
                   )},`
                 : ""
-            }configOverride?:any
+            }
 ): Promise<SwaggerResponse<${responses ? getTsType(responses) : "any"}>> => {
   ${
     deprecated

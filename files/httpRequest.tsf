@@ -5,60 +5,44 @@ export const Http = {
     url: string,
     queryParams: any,
     requestBody: any,
-    ...rest: any
   ): Promise<any> {
-    return getRequest().get(
-      {
-        url: url,
-        queryParams: queryParams,
-        requestBody: requestBody,
-      },
-      ...rest,
-    );
+    return getRequest().get({
+      url: url,
+      queryParams: queryParams,
+      requestBody: requestBody,
+    });
   },
   async postRequest(
     url: string,
     queryParams: any,
     requestBody: any,
-    ...rest: any
   ): Promise<any> {
-    return getRequest().post(
-      {
-        url: url,
-        queryParams: queryParams,
-        requestBody: requestBody,
-      },
-      ...rest,
-    );
+    return getRequest().post({
+      url: url,
+      queryParams: queryParams,
+      requestBody: requestBody,
+    });
   },
   async putRequest(
     url: string,
     queryParams: any,
     requestBody: any,
-    ...rest: any
   ): Promise<any> {
-    return getRequest().put(
-      {
-        url: url,
-        queryParams: queryParams,
-        requestBody: requestBody,
-      },
-      ...rest,
-    );
+    return getRequest().put({
+      url: url,
+      queryParams: queryParams,
+      requestBody: requestBody,
+    });
   },
   async deleteRequest(
     url: string,
     queryParams: any,
     requestBody: any,
-    ...rest: any
   ): Promise<any> {
-    return getRequest().delete(
-      {
-        url: url,
-        queryParams: queryParams,
-        requestBody: requestBody,
-      },
-      ...rest,
-    );
+    return getRequest().delete({
+      url: url,
+      queryParams: queryParams,
+      requestBody: requestBody,
+    });
   },
 };
