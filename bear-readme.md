@@ -2,7 +2,7 @@
 
 ## 1. 安装
 
- `$ npm i --save-dev swagger-typescript --registry=https://nexus.billbear.cn/repository/npm-group/`
+ `$ npm i --save-dev @lowinc/swagger-typescript --registry=https://nexus.billbear.cn/repository/npm-group/`
 
 
 ## 2. 配置 swagger.config.json
@@ -19,6 +19,6 @@
 ## 3. 生成
 
 
-`$ yarn swag-ts`
+`$ yarn bear-swag-ts`
 
 

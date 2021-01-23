@@ -1,10 +1,10 @@
 {
-  "name": "swagger-typescript",
+  "name": "@lowinc/swagger-typescript",
   "version": "6.0.0",
   "description": "A auto generate typescript code from swagger",
   "main": "bin/index.js",
   "bin": {
-    "swag-ts": "bin/index.js"
+    "bear-swag-ts": "bin/index.js"
   },
   "scripts": {
     "generate": "yarn test",
