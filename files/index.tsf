@@ -1,3 +1,2 @@
-export { createAxiosEventListener } from "./event";
-export { createAxiosLoadingListener } from "./loading";
 export * as services from "./services";
+export { setRequest } from "./setHttpRequest";

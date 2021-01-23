@@ -32,8 +32,6 @@ function generateApis(apis: ApiAST[]): string {
             method,
             endPoint,
             pathParamsRefString,
-            additionalAxiosConfig,
-            security,
           },
         ) => {
           return (
@@ -78,7 +76,7 @@ ${getJsdoc({
                     headerParams,
                   )},`
                 : ""
-            }configOverride?:AxiosRequestConfig
+            }
 ): Promise<SwaggerResponse<${responses ? getTsType(responses) : "any"}>> => {
   ${
     deprecated
@@ -99,10 +97,6 @@ ${getJsdoc({
     },
     ${queryParamsTypeName ? "queryParams" : "undefined"},
     ${requestBody ? "requestBody" : "undefined"},
-    ${security},
-    overrideConfig(${additionalAxiosConfig},
-      configOverride,
-    )
   )
 }
 `

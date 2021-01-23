@@ -6580,15 +6580,6 @@ supports-hyperlinks@^2.0.0:
     has-flag "^4.0.0"
     supports-color "^7.0.0"
 
-swagger-typescript@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.npmjs.org/swagger-typescript/-/swagger-typescript-4.4.0.tgz#b81e140af99be207cfa64cce46271f7bc19cdc79"
-  integrity sha512-Ef0ocOeFyAOONerZF7i7OKG2Whs4373df1PsoukYPIrqBM+Tjonm0FDjkKxdYIIaN8iFuaNyTIdYyRSqAElVBg==
-  dependencies:
-    axios "^0.19.2"
-    qs "^6.9.4"
-    tsc-prog "^2.2.1"
-
 symbol-tree@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"

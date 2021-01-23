@@ -1,56 +1,48 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
-/**
- * AUTO_GENERATED Do not change this file directly, use config.ts file instead
- *
- * @version 4
- */
-import { AxiosRequestConfig, AxiosResponse } from "axios";
-import { getAxiosInstance, Security } from "./config";
-
-import qs from "qs";
+import { getRequest } from "./setHttpRequest";
 
 export const Http = {
   async getRequest(
     url: string,
     queryParams: any,
     requestBody: any,
-    security: Security,
-    configOverride?: AxiosRequestConfig,
-  ): Promise<AxiosResponse<any>> {
-    let query = queryParams;
-    const form = queryParams?.form || {};
-    if (typeof form === "object") {
-      query = form;
-    }
-
-    return getAxiosInstance().get(`${url}?${qs.stringify(query)}`);
+  ): Promise<any> {
+    return getRequest().get({
+      url: url,
+      queryParams: queryParams,
+      requestBody: requestBody,
+    });
   },
   async postRequest(
     url: string,
     queryParams: any,
     requestBody: any,
-    security: Security,
-    configOverride?: AxiosRequestConfig,
-  ): Promise<AxiosResponse<any>> {
-    return getAxiosInstance().post(url, requestBody);
+  ): Promise<any> {
+    return getRequest().post({
+      url: url,
+      queryParams: queryParams,
+      requestBody: requestBody,
+    });
   },
   async putRequest(
     url: string,
     queryParams: any,
     requestBody: any,
-    security: Security,
-    configOverride?: AxiosRequestConfig,
-  ): Promise<AxiosResponse<any>> {
-    return getAxiosInstance().put(url, requestBody);
+  ): Promise<any> {
+    return getRequest().put({
+      url: url,
+      queryParams: queryParams,
+      requestBody: requestBody,
+    });
   },
   async deleteRequest(
     url: string,
     queryParams: any,
     requestBody: any,
-    security: Security,
-    configOverride?: AxiosRequestConfig,
-  ): Promise<AxiosResponse<any>> {
-    return getAxiosInstance().delete(url);
+  ): Promise<any> {
+    return getRequest().delete({
+      url: url,
+      queryParams: queryParams,
+      requestBody: requestBody,
+    });
   },
 };

@@ -1,0 +1,28 @@
+interface Params {
+  url: string;
+  queryParams?: object;
+  requestBody?: object;
+}
+
+interface Request {
+  get: (params: Params) => any;
+  post: (params: Params) => any;
+  put: (params: Params) => any;
+  delete: (params: Params) => any;
+}
+
+let request: Request;
+export function setRequest(requestInstant: Request) {
+  request = requestInstant;
+}
+
+export function getRequest() {
+  return {
+    get: request.get,
+    post: request.post,
+    put: request.put,
+    delete: request.delete,
+  };
+}
+
+export type SwaggerResponse<R> = R;
