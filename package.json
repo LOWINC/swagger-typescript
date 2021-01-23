@@ -1,6 +1,6 @@
 {
   "name": "@lowinc/swagger-typescript",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "A auto generate typescript code from swagger",
   "main": "bin/index.js",
   "bin": {
