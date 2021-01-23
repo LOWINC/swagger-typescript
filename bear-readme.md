@@ -10,7 +10,7 @@
 ```json
 {
   "url": "http://47.102.105.127:8100/v3/api-docs/billbear-supplychain-server",
-  "dir": "./src/lib",
+  "dir": "./src",
   "language": "typescript"
 }
 
@@ -22,3 +22,7 @@
 `$ yarn bear-swag-ts`
 
 
+
+## 4. 参考
+
+[gitlab](https://gitlab.dev.billbear.cn/interest/frontend/admin-api-billbear-foodie-first-server)
