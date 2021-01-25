@@ -1,5 +1,5 @@
 import { getRequest } from "./setHttpRequest";
-import { service } from "service-name";
+import { service } from "./service-name";
 
 export const Http = {
   async getRequest(
