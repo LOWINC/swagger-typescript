@@ -3,7 +3,7 @@ import { SwaggerConfig } from "./types";
 
 export function generateService() {
   const { serviceName }: SwaggerConfig = getSwaggerConfig();
-  const name = serviceName ? `${serviceName}/` : "";
+  const name = serviceName ? `${serviceName}` : "";
   return `
     export const service =  "${name}"
   `;
