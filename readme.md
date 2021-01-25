@@ -1,22 +1,28 @@
 # swagger 接口工具
 
-## 1.1 安装
+## 1 新建api项目
+
+### 1.1 安装
+
+
 
  `$ npm i --save-dev @lowinc/swagger-typescript --registry=https://nexus.billbear.cn/repository/npm-group/`
 
 
-## 1.2 配置 swagger.config.json
+### 1.2 配置 swagger.config.json
 
 ```json
 {
-  "url": "http://47.102.105.127:8100/v3/api-docs/billbear-supplychain-server",
+  "url": "http://47.102.105.127:8100/v3/api-docs/billbear-supplier",
   "dir": "./src",
-  "language": "typescript"
+  "language": "typescript",
+  "serviceName": "supplymerchant"
 }
+
 
 ```
 
-## 1.3 生成
+### 1.3 生成
 
 
 `$ yarn bear-swag-ts`
@@ -35,9 +41,7 @@
 ### 2.1 初始化接口
 
 ```js
-import {setRequest, setService } from 'your-package-name'
-
-setService('user/')
+import {setRequest } from 'admin-api-xxxxxx'
 
 setRequest({
   get:yourAdapterForGet,
@@ -52,7 +56,7 @@ setRequest({
 
 
 ```jsx
-import {services } from 'xxxxxx-package-name'
+import {services } from 'admin-api-xxxxxx'
 
 services.xxxxxx().then(res=>{
   console.log('success:',res)
