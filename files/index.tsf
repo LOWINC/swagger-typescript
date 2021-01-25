@@ -1,2 +1,2 @@
 export * as services from "./services";
-export { setRequest } from "./setHttpRequest";
+export { setRequest, setService } from "./setHttpRequest";

@@ -1,4 +1,4 @@
-import { getRequest } from "./setHttpRequest";
+import { getRequest, getService } from "./setHttpRequest";
 
 export const Http = {
   async getRequest(
@@ -7,7 +7,7 @@ export const Http = {
     requestBody: any,
   ): Promise<any> {
     return getRequest().get({
-      url: url,
+      url: getService() + url,
       queryParams: queryParams,
       requestBody: requestBody,
     });
@@ -18,7 +18,7 @@ export const Http = {
     requestBody: any,
   ): Promise<any> {
     return getRequest().post({
-      url: url,
+      url: getService() + url,
       queryParams: queryParams,
       requestBody: requestBody,
     });
@@ -29,7 +29,7 @@ export const Http = {
     requestBody: any,
   ): Promise<any> {
     return getRequest().put({
-      url: url,
+      url: getService() + url,
       queryParams: queryParams,
       requestBody: requestBody,
     });
@@ -40,7 +40,7 @@ export const Http = {
     requestBody: any,
   ): Promise<any> {
     return getRequest().delete({
-      url: url,
+      url: getService() + url,
       queryParams: queryParams,
       requestBody: requestBody,
     });
