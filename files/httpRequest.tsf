@@ -1,6 +1,13 @@
 import { getRequest } from "./setHttpRequest";
 import { service } from "./service-name";
 
+function genurl(url: string) {
+  if (!!service) {
+    return `${service}${url}`;
+  }
+  return url;
+}
+
 export const Http = {
   async getRequest(
     url: string,
@@ -8,7 +15,7 @@ export const Http = {
     requestBody: any,
   ): Promise<any> {
     return getRequest().get({
-      url: service + url,
+      url: genurl(url),
       queryParams: queryParams,
       requestBody: requestBody,
     });
@@ -19,7 +26,7 @@ export const Http = {
     requestBody: any,
   ): Promise<any> {
     return getRequest().post({
-      url: service + url,
+      url: genurl(url),
       queryParams: queryParams,
       requestBody: requestBody,
     });
@@ -30,7 +37,7 @@ export const Http = {
     requestBody: any,
   ): Promise<any> {
     return getRequest().put({
-      url: service + url,
+      url: genurl(url),
       queryParams: queryParams,
       requestBody: requestBody,
     });
@@ -41,7 +48,7 @@ export const Http = {
     requestBody: any,
   ): Promise<any> {
     return getRequest().delete({
-      url: service + url,
+      url: genurl(url),
       queryParams: queryParams,
       requestBody: requestBody,
     });

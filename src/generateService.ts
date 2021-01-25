@@ -5,6 +5,6 @@ export function generateService() {
   const { serviceName }: SwaggerConfig = getSwaggerConfig();
   const name = serviceName ? `${serviceName}/` : "";
   return `
-    export let service =  "${name}"
+    export const service =  "${name}"
   `;
 }
