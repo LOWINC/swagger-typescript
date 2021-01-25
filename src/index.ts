@@ -1,9 +1,11 @@
-import { writeFileSync, existsSync, mkdirSync, readFileSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { format } from "prettier";
-import { SwaggerJson, SwaggerConfig } from "./types";
-import { HTTP_REQUEST, SET_HTTP_REQUEST, INDEX } from "./strings";
-import { getSwaggerJson } from "./getJson";
+import { generateService } from "./generateService";
 import { generator } from "./generator";
+import { getSwaggerJson } from "./getJson";
+import { getSwaggerConfig } from "./getSwaggerConfig";
+import { HTTP_REQUEST, INDEX, SET_HTTP_REQUEST } from "./strings";
+import { SwaggerConfig, SwaggerJson } from "./types";
 import { majorVersionsCheck } from "./utils";
 
 async function generate() {
@@ -32,11 +34,13 @@ async function generate() {
 
     const code = generator(input, config);
 
+    writeFileSync(`${dir}/service-name.ts`, generateService());
     writeFileSync(`${dir}/services.ts`, code);
     writeFileSync(`${dir}/httpRequest.ts`, HTTP_REQUEST);
     writeFileSync(`${dir}/index.ts`, INDEX);
     writeFileSync(`${dir}/setHttpRequest.ts`, SET_HTTP_REQUEST);
 
+    formatFile(`${dir}/service-name.ts`, prettierOptions);
     formatFile(`${dir}/services.ts`, prettierOptions);
     formatFile(`${dir}/httpRequest.ts`, prettierOptions);
     formatFile(`${dir}/setHttpRequest.ts`, prettierOptions);
@@ -48,24 +52,6 @@ async function generate() {
 function formatFile(filePath: string, prettierOptions: any) {
   const code = readFileSync(filePath).toString();
   writeFileSync(filePath, format(code, prettierOptions));
-}
-
-function getSwaggerConfig() {
-  try {
-    const config = JSON.parse(readFileSync("swagger.config.json").toString());
-
-    if (!config) {
-      throw "";
-    }
-
-    return config;
-  } catch (error) {
-    try {
-      return JSON.parse(readFileSync("./swaggerConfig.json").toString()); // backward compatible for  v1
-    } catch {
-      throw new Error("Please define swagger.config.json");
-    }
-  }
 }
 
 function getPrettierOptions(prettierPath: string) {

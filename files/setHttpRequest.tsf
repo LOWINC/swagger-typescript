@@ -25,14 +25,4 @@ export function getRequest() {
   };
 }
 
-// 服务名
-// api/服务名/接口地址
-let service = "";
-export function setService(name: string) {
-  service = name;
-}
-export function getService() {
-  return service;
-}
-
 export type SwaggerResponse<R> = R;

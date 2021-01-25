@@ -189,6 +189,7 @@ export interface SwaggerConfig {
   ignore: {
     headerParams: string[];
   };
+  serviceName?: string;
 }
 
 export type ApiAST = {
